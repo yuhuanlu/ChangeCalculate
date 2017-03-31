@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>變身比賽結果計算</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <div class="container">
+  	<h1>變身百分比計算</h1>
+
+		<div>
+		  <div class="form-group">
+		    <label for="originalWeight">原始體重</label>
+		    <input type="number" step="0.01" class="form-control" name="originalWeight" id="originalWeight" placeholder="原始體重">kg
+		  </div>
+		  <div class="form-group">
+		    <label for="originalFat">原始體脂比</label>
+		    <input type="number" step="0.0001" class="form-control" name="originalFat" id="originalFat" placeholder="原始體脂比">%
+		  </div>
+		  <div class="form-group">
+		    <label for="weight">現在體重</label>
+		    <input type="number" step="0.01" class="form-control" name="weight" id="weight" placeholder="原始體重">kg
+		  </div>
+		  <div class="form-group">
+		    <label for="fat">現在體脂比</label>
+		    <input type="number" step="0.0001" class="form-control" name="fat" id="fat" placeholder="原始體脂比">%
+		  </div>
+		  <button type="button" class="btn btn-default" id="calculateBtn" onclick="calculate()">Submit</button>
+		</div>
+
+		<div>
+		  <h3>結果:<span id="result"></span>%</h3>
+		</div>
+	</div>
+
+	<script>
+		function calculate() {
+			var oriW = document.getElementById("originalWeight").value;
+			// var oriF = document.getElementById("originalFat").value * oriW;
+			var oriF = document.getElementById("originalFat").value;
+
+			var w = document.getElementById("weight").value;
+			// var f = document.getElementById("fat").value * w;
+			var f = document.getElementById("fat").value;
+
+			var r = ((oriW-w)/oriW + (oriF-f)/oriF)*100
+		    document.getElementById("result").innerHTML = r;
+		}
+	</script>
+</body>
+</html>
